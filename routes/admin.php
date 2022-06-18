@@ -3,7 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\User_PostController;
-
+use App\Http\Controllers\Dashboard\CategoiresController;
+use App\Http\Controllers\Dashboard\ProductController;
 // use Config\LaravelLocalization;
 
 /*
@@ -19,35 +20,34 @@ use App\Http\Controllers\Dashboard\User_PostController;
 Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']],
 function () {
 
-// Route::get('/', function () {
-//     return view('admin.index');
-// });
-
-// Route::middleware([
-//     'auth:sanctum',
-//     config('jetstream.auth_session'),
-//     'verified'
-// ])->group(function () {
-//     Route::get('/dashboard', function () {
-//         return view('dashboard');
-//     })->name('dashboard');
 
 
 
    
     Route::prefix('dashboard')->name('dashboard.')->middleware(['auth'])->group(function () {
-// Route::prefix('dashboard')->name('dashboard.')->group(function(){
+
     Route::get("/index" , [DashboardController::class, "index"])->name('index');
 
-// route::resource("users" ,[User_PostController::class,"index"]);
-// Route::resource('users', 'User_PostController');
 Route::resource('users', User_PostController::class)->except(['show']);
 
 
+ //category routes
+ Route::resource('categories', CategoiresController::class)->except(['show']);
 
 
+ Route::resource('products', ProductController::class)->except(['show']);
+
+            //client routes
+            Route::resource('clients', ClientController::class)->except(['show']);
+            Route::resource('clients.orders', Client\OrderController::class)->except(['show']);
+
+            //order routes
+            Route::resource('orders', OrderController::class);
+            // Route::get('/orders/{order}/products', OrderController@products::class)->name('orders.products');
 
 
+            //user routes
+            Route::resource('users', UserController::class)->except(['show']);
 
 
 

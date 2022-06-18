@@ -11,13 +11,30 @@ use Intervention\Image\Facades\Image;
 class User_PostController extends Controller
 {
 
-    
-   
-    public function index()
+    public function __construct()
     {
-    $users = User::all();
+        //create read update delete
+        $this->middleware(['permission:read_users'])->only('index');
+        $this->middleware(['permission:create_users'])->only('create');
+        $this->middleware(['permission:update_users'])->only('edit');
+        $this->middleware(['permission:delete_users'])->only('destroy');
+
+    }//end of constructor
+   
+    public function index(Request $request)
+    {
+        $users = User::whereRoleIs('admin')->where(function ($q) use ($request) {
+
+            return $q->when($request->search, function ($query) use ($request) {
+
+                return $query->where('first_name', 'like', '%' . $request->search . '%')
+                    ->orWhere('last_name', 'like', '%' . $request->search . '%');
+
+            });
+
+        })->latest()->paginate(5);
     return view('admin.user.index' ,compact('users'));
-    }
+    }//end of index
 
    
     public function create()
