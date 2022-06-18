@@ -1,41 +1,88 @@
-{{-- <script src="{{ asset('vendor/global/global.min.js')}}"></script>
-<script src="{{ asset('vendor/jquery-nice-select/js/jquery.nice-select.min.js')}}"></script>
-<script src="{{ asset('js/custom.min.js')}}"></script>
-<script src="{{ asset('js/dlabnav-init.js')}}"></script>
-<script src="{{ asset('js/demo.js')}}"></script>
-<script src="{{ asset('js/styleSwitcher.js')}}"></script>
 
-<script src="vendor/global/global.min.js"></script>
-<script src="vendor/chart.js/Chart.bundle.min.js"></script>
-<script src="vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script> --}}
+{{--<!-- Bootstrap 3.3.7 -->--}}
+<script src="{{ asset('dashboard_files/js/bootstrap.min.js') }}"></script>
 
-<!-- Apex Chart -->
-{{-- <script src="{{ asset('vendor/apexchart/apexchart.js')}}"></script>
-<script src="{{ asset('vendor/nouislider/nouislider.min.js')}}"></script>
-<script src="{{ asset('vendor/wnumb/wNumb.js')}}"></script> --}}
+{{--icheck--}}
+<script src="{{ asset('dashboard_files/plugins/icheck/icheck.min.js') }}"></script>
 
-<!-- Dashboard 1 -->
-{{-- <script src="{{ asset('js/dashboard/dashboard-1.js')}}"></script> --}}
+{{--<!-- FastClick -->--}}
+<script src="{{ asset('dashboard_files/js/fastclick.js') }}"></script>
 
+{{--<!-- AdminLTE App -->--}}
+<script src="{{ asset('dashboard_files/js/adminlte.min.js') }}"></script>
 
-<script src="{{URL::asset('vendor/global/global.min.js')}}"></script>
-<script src="{{URL::asset('vendor/jquery-nice-select/js/jquery.nice-select.min.js')}}"></script>
-<script src="{{URL::asset('js/custom.min.js')}}"></script>
-<script src="{{URL::asset('js/dlabnav-init.js')}}"></script>
-<script src="{{URL::asset('js/demo.js')}}"></script>
-<script src="{{URL::asset('js/styleSwitcher.js')}}"></script>
+{{--ckeditor standard--}}
+<script src="{{ asset('dashboard_files/plugins/ckeditor/ckeditor.js') }}"></script>
 
+{{--jquery number--}}
+<script src="{{ asset('dashboard_files/js/jquery.number.min.js') }}"></script>
 
+{{--print this--}}
+<script src="{{ asset('dashboard_files/js/printThis.js') }}"></script>
 
-	<script src="{{URL::asset('vendor/chart.js/Chart.bundle.min.js')}}"></script>
+{{--morris --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+<script src="{{ asset('dashboard_files/plugins/morris/morris.min.js') }}"></script>
 
-	
-	<!-- Apex Chart -->
-	<script src="{{URL::asset('vendor/apexchart/apexchart.js')}}"></script>
-	<script src="{{URL::asset('vendor/nouislider/nouislider.min.js')}}"></script>
-	<script src="{{URL::asset('vendor/wnumb/wNumb.js')}}"></script>
-	
-	<!-- Dashboard 1 -->
-	<script src="{{URL::asset('js/dashboard/dashboard-1.js')}}"></script>
+{{--custom js--}}
+<script src="{{ asset('dashboard_files/js/custom/image_preview.js') }}"></script>
+<script src="{{ asset('dashboard_files/js/custom/order.js') }}"></script>
 
-   
+<script>
+    $(document).ready(function () {
+
+        $('.sidebar-menu').tree();
+
+        //icheck
+        $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+            checkboxClass: 'icheckbox_minimal-blue',
+            radioClass: 'iradio_minimal-blue'
+        });
+
+        //delete
+        $('.delete').click(function (e) {
+
+            var that = $(this)
+
+            e.preventDefault();
+
+            var n = new Noty({
+                text: "@lang('site.confirm_delete')",
+                type: "warning",
+                killer: true,
+                buttons: [
+                    Noty.button("@lang('site.yes')", 'btn btn-success mr-2', function () {
+                        that.closest('form').submit();
+                    }),
+
+                    Noty.button("@lang('site.no')", 'btn btn-primary mr-2', function () {
+                        n.close();
+                    })
+                ]
+            });
+
+            n.show();
+
+        });//end of delete
+
+        // // image preview
+        // $(".image").change(function () {
+        //
+        //     if (this.files && this.files[0]) {
+        //         var reader = new FileReader();
+        //
+        //         reader.onload = function (e) {
+        //             $('.image-preview').attr('src', e.target.result);
+        //         }
+        //
+        //         reader.readAsDataURL(this.files[0]);
+        //     }
+        //
+        // });
+
+        CKEDITOR.config.language =  "{{ app()->getLocale() }}";
+
+    });//end of ready
+    
+</script>
+@stack('scripts')

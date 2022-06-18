@@ -1,7 +1,7 @@
-<div class="footer">
-    <div class="copyright">
-        <p>Copyright © Designed &amp; Developed by <a href="https://dexignlab.com/" target="_blank">DexignLab</a> 2022</p>
+<footer class="main-footer">
+    <div class="pull-right hidden-xs">
+        <b>Version</b> 2.4.0
     </div>
-</div>
-
-</div>
+    <strong>Copyright &copy; 2022-2023
+        <a href="https://www.facebook.com/profile.php?id=100003593326912">mohammd mustafa</a>.</strong> welcome.
+</footer>

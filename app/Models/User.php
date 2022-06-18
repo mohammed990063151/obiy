@@ -8,12 +8,15 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
+use Laratrust\Traits\LaratrustUserTrait;
 // use Laravel\Sanctum\HasApiTokens;
+
 
 class User extends Authenticatable
 {
     // use MustVerifyEmail;
     // use HasApiTokens;
+    use LaratrustUserTrait;
     use HasFactory;
     use HasProfilePhoto;
     use Notifiable;
@@ -25,11 +28,13 @@ class User extends Authenticatable
      * @var string[]
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
         'email',
-        'password',
+        'password', 'image'
     ];
 
+    protected $appends = ['image_path'];
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -56,7 +61,25 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $appends = [
-        'profile_photo_url',
-    ];
+    // protected $appends = [
+    //     'profile_photo_url',
+    // ];
+
+    public function getFirstNameAttribute($value)
+    {
+        return ucfirst($value);
+
+    }//end of get first name
+
+    public function getLastNameAttribute($value)
+    {
+        return ucfirst($value);
+
+    }//end of get last name
+
+    public function getImagePathAttribute()
+    {
+        return asset('uploads/user_images/' . $this->image);
+
+    }//end of get image path
 }
