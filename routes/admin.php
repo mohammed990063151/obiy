@@ -5,7 +5,7 @@ use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\User_PostController;
 use App\Http\Controllers\Dashboard\CategoiresController;
 use App\Http\Controllers\Dashboard\ProductController;
-// use Config\LaravelLocalization;
+use App\Http\Controllers\Dashboard\ClientController;
 
 /*
 |--------------------------------------------------------------------------
