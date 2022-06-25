@@ -1,9 +1,10 @@
 @extends('admin.layouts.master') 
 
-
+@section('title')
+لوحة التحكم
+@stop
 
 @section('content')
-
 <div class="content-wrapper">
 
     <section class="content-header">
@@ -23,14 +24,14 @@
             <div class="col-lg-3 col-xs-6">
                 <div class="small-box bg-aqua">
                     <div class="inner">
-                        {{-- <h3>{{ $categories_count }}</h3> --}}
+                        <h3>{{ $categories_count }}</h3>
 
                         <p>@lang('site.categories')</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-bag"></i>
                     </div>
-                 {{-- /   <a href="{{ route('dashboard.categories.index') }}" class="small-box-footer">@lang('site.read') <i class="fa fa-arrow-circle-right"></i></a> --}}
+                    <a href="{{ route('dashboard.categories.index') }}" class="small-box-footer">@lang('site.read') <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
 
@@ -38,14 +39,14 @@
             <div class="col-lg-3 col-xs-6">
                 <div class="small-box bg-green">
                     <div class="inner">
-                        {{-- <h3>{{ $products_count }}</h3> --}}
+                        <h3>{{ $products_count }}</h3>
 
                         <p>@lang('site.products')</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-stats-bars"></i>
                     </div>
-                    {{-- <a href="{{ route('dashboard.products.index') }}" class="small-box-footer">@lang('site.read') <i class="fa fa-arrow-circle-right"></i></a> --}}
+                    <a href="{{ route('dashboard.products.index') }}" class="small-box-footer">@lang('site.read') <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
 
@@ -53,14 +54,14 @@
             <div class="col-lg-3 col-xs-6">
                 <div class="small-box bg-red">
                     <div class="inner">
-                        {{-- <h3>{{ $clients_count }}</h3> --}}
+                        <h3>{{ $clients_count }}</h3>
 
                         <p>@lang('site.clients')</p>
                     </div>
                     <div class="icon">
                         <i class="fa fa-user"></i>
                     </div>
-                    {{-- <a href="{{ route('dashboard.clients.index') }}" class="small-box-footer">@lang('site.read') <i class="fa fa-arrow-circle-right"></i></a> --}}
+                    <a href="{{ route('dashboard.clients.index') }}" class="small-box-footer">@lang('site.read') <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
 
@@ -68,14 +69,14 @@
             <div class="col-lg-3 col-xs-6">
                 <div class="small-box bg-yellow">
                     <div class="inner">
-                        {{-- <h3>{{ $users_count }}</h3> --}}
+                        <h3>{{ $users_count }}</h3>
 
                         <p>@lang('site.users')</p>
                     </div>
                     <div class="icon">
                         <i class="fa fa-users"></i>
                     </div>
-                    {{-- <a href="{{ route('dashboard.users.index') }}" class="small-box-footer">@lang('site.read') <i class="fa fa-arrow-circle-right"></i></a> --}}
+                    <a href="{{ route('dashboard.users.index') }}" class="small-box-footer">@lang('site.read') <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
 
@@ -99,8 +100,8 @@
 
 @endsection
 
-{{-- @push('scripts') --}}
-{{-- 
+@push('scripts')
+
 <script>
 
     //line chart
@@ -108,11 +109,11 @@
         element: 'line-chart',
         resize: true,
         data: [
-            // @foreach ($sales_data as $data)
+            @foreach ($sales_data as $data)
             {
                 ym: "{{ $data->year }}-{{ $data->month }}", sum: "{{ $data->sum }}"
             },
-            // @endforeach
+            @endforeach
         ],
         xkey: 'ym',
         ykeys: ['sum'],
@@ -124,8 +125,6 @@
         gridTextFamily: 'Open Sans',
         gridTextSize: 10
     });
-</script> --}}
+</script>
 
-{{-- @endpush --}}
-
-{{-- @endsection --}}
+@endpush

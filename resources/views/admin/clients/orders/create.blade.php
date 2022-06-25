@@ -1,5 +1,7 @@
 @extends('admin.layouts.master') 
-
+@section('title')
+    اضافة طلب لعميل
+@stop
 @section('content')
 
     <div class="content-wrapper">
@@ -68,6 +70,7 @@
                                                                        data-name="{{ $product->name }}"
                                                                        data-id="{{ $product->id }}"
                                                                        data-price="{{ $product->sale_price }}"
+                                                                       data-stock="{{ $product->stock }}"
                                                                        class="btn btn-success btn-sm add-product-btn">
                                                                         <i class="fa fa-plus"></i>
                                                                     </a>

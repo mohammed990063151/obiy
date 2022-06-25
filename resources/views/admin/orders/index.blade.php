@@ -1,5 +1,7 @@
-@extends('layouts.dashboard.app')
-
+@extends('admin.layouts.master') 
+@section('title')
+بيانات الطلبات 
+@stop
 @section('content')
 
     <div class="content-wrapper">
@@ -11,7 +13,7 @@
             </h1>
 
             <ol class="breadcrumb">
-                <li><a href="{{ route('dashboard.welcome') }}"><i class="fa fa-dashboard"></i> @lang('site.dashboard')</a></li>
+                <li><a href="{{ route('dashboard.index') }}"><i class="fa fa-dashboard"></i> @lang('site.dashboard')</a></li>
                 <li class="active">@lang('site.orders')</li>
             </ol>
         </section>
@@ -60,6 +62,7 @@
                                     </tr>
 
                                     @foreach ($orders as $order)
+                                    
                                         <tr>
                                             <td>{{ $order->client->name }}</td>
                                             <td>{{ number_format($order->total_price, 2) }}</td>

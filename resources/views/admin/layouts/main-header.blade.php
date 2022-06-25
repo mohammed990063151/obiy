@@ -4,7 +4,7 @@
 	<a href="{{ asset('dashboard') }}/index2.html" class="logo">
 		{{--<!-- mini logo for sidebar mini 50x50 pixels -->--}}
 		<span class="logo-mini"><b>A</b>LT</span>
-		<span class="logo-lg"><b>Admin</b>LTE</span>
+		<span class="logo-lg"><b>Obiy</b>Online Shop</span>
 	</a>
 
 	<nav class="navbar navbar-static-top">
@@ -33,7 +33,7 @@
 								<li><!-- start message -->
 									<a href="#">
 										<div class="pull-left">
-											<img src="{{ asset('dashboard_files/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
+											<img src="{{ asset('dashboard_files/img/user2-160x160.png') }}" class="img-circle" alt="User Image">
 										</div>
 										<h4>
 											Support Team
@@ -100,14 +100,14 @@
 				<li class="dropdown user user-menu">
 
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-						<img src="{{ asset('dashboard_files/img/user2-160x160.jpg') }}" class="user-image" alt="User Image">
+						<img src="{{ asset('dashboard_files/img/user2-160x160.png') }}" class="user-image" alt="User Image">
 						{{-- <span class="hidden-xs">{{ auth()->user()->first_name }} {{ auth()->user()->last_name }}</span> --}}
 					</a>
 					<ul class="dropdown-menu">
 
 						{{--<!-- User image -->--}}
 						<li class="user-header">
-							<img src="{{ asset('dashboard_files/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
+							<img src="{{ asset('dashboard_files/img/user2-160x160.png') }}" width="10px" class="img-circle" alt="User Image">
 
 							<p>
 								{{-- {{ auth()->user()->first_name }} {{ auth()->user()->last_name }} --}}

@@ -11,9 +11,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 
-class DashboardController extends Controller
+class WelcomeController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $categories_count = Category::count();
         $products_count = Product::count();
         $clients_count = Client::count();
@@ -25,9 +26,8 @@ class DashboardController extends Controller
             DB::raw('SUM(total_price) as sum')
         )->groupBy('month')->get();
 
-        return view('admin.dashboard.index', compact('categories_count', 'products_count', 'clients_count', 'users_count', 'sales_data'));
+        return view('dashboard.welcome', compact('categories_count', 'products_count', 'clients_count', 'users_count', 'sales_data'));
     
     }//end of index
     
 }//end of controller
-  

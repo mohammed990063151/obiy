@@ -1,5 +1,7 @@
 @extends('admin.layouts.master') 
-
+@section('title') 
+اضافة منتج 
+@stop
 @section('content')
 
     <div class="content-wrapper">

@@ -1,5 +1,7 @@
 @extends('admin.layouts.master') 
-
+@section('title')
+بيانات المشرفين
+@stop
 @section('content')
 
     <div class="content-wrapper">

@@ -6,6 +6,9 @@ use App\Http\Controllers\Dashboard\User_PostController;
 use App\Http\Controllers\Dashboard\CategoiresController;
 use App\Http\Controllers\Dashboard\ProductController;
 use App\Http\Controllers\Dashboard\ClientController;
+// use App\Http\Controllers\Dashboard\Client\OrdertController;
+use App\Http\Controllers\Dashboard\OrderController;
+// use App\Http\Controllers\Dashboard\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,15 +42,15 @@ Route::resource('users', User_PostController::class)->except(['show']);
 
             //client routes
             Route::resource('clients', ClientController::class)->except(['show']);
-            Route::resource('clients.orders', Client\OrderController::class)->except(['show']);
+            Route::resource('clients.orders', '\App\Http\Controllers\Dashboard\Client\OrdertController')->except(['show']);
 
             //order routes
             Route::resource('orders', OrderController::class);
-            // Route::get('/orders/{order}/products', OrderController@products::class)->name('orders.products');
+            Route::get('/orders/{order}/products', [OrderController::class ,"products"])->name('orders.products');
 
 
             //user routes
-            Route::resource('users', UserController::class)->except(['show']);
+            // Route::resource('users', UserController::class)->except(['show']);
 
 
 
