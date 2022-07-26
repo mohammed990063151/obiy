@@ -39,6 +39,7 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
+        // return $request;
         $rules = [
             'category_id' => 'required'
         ];

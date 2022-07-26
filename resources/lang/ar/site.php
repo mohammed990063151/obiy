@@ -64,6 +64,8 @@ return [
     'quantity' => 'الكميه',
     'total' => 'المجموع',
     'purchase_price' => 'سعر الشراء',
+    'purchase_qurio' => 'سعر مصري',
+    'purchase_sudan' => '  ما يعادله في سوق',
     'price' => 'السعر',
     'sale_price' => 'سعر البيع',
     'stock' => 'المخزن',

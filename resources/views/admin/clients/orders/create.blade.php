@@ -63,13 +63,13 @@
                                                             <tr>
                                                                 <td>{{ $product->name }}</td>
                                                                 <td>{{ $product->stock }}</td>
-                                                                <td>{{ number_format($product->sale_price, 2) }}</td>
+                                                                <td><input type="number" name="sale_price" value="{{ $product->sale_price }}"></td>
                                                                 <td>
                                                                     <a href=""
                                                                        id="product-{{ $product->id }}"
                                                                        data-name="{{ $product->name }}"
                                                                        data-id="{{ $product->id }}"
-                                                                       data-price="{{ $product->sale_price }}"
+                                                                       data-sale_price ="{{ $product->sale_price }}"
                                                                        data-stock="{{ $product->stock }}"
                                                                        class="btn btn-success btn-sm add-product-btn">
                                                                         <i class="fa fa-plus"></i>

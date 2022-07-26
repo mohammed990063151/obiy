@@ -63,12 +63,33 @@
                         <div class="form-group">
                             <img src="{{ asset('uploads/product_images/default.png') }}" style="width: 100px" class="img-thumbnail image-preview" alt="">
                         </div>
+                    
 
+                        <div  class="row">
+                            <div class="col-md-6">
                         <div class="form-group">
                             <label>@lang('site.purchase_price')</label>
-                            <input type="number" name="purchase_price" step="0.01" class="form-control" value="{{ old('purchase_price') }}">
+                            <input type="number" name="purchase_price" id="Amount_Commission" class="form-control"
+                           title="يرجي ادخال مبلغ العمولة "
+                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                            required>
                         </div>
+                    </div>
 
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>@lang('site.purchase_sudan')</label>
+                            <input type="number" name="purchase_sudan" id="Rate_VAT" class="form-control" onchange="myFunction()">
+                        </div>
+                    </div>
+
+                </div>
+                        <div class="form-group">
+                            <label>@lang('site.purchase_qurio')<label>
+                                <input type="number" class="form-control" id="Value_VAT" name="sale_qure" readonly>
+                        </div>
+                    
+               
                         <div class="form-group">
                             <label>@lang('site.sale_price')</label>
                             <input type="number" name="sale_price" step="0.01" class="form-control" value="{{ old('sale_price') }}">
@@ -79,6 +100,11 @@
                             <input type="number" name="stock" class="form-control" value="{{ old('stock') }}">
                         </div>
 
+
+                    
+
+
+              
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i> @lang('site.add')</button>
                         </div>
@@ -92,5 +118,33 @@
         </section><!-- end of content -->
 
     </div><!-- end of content wrapper -->
+
+
+    <script>
+        function myFunction() {
+
+            var Amount_Commission = parseFloat(document.getElementById("Amount_Commission").value);
+            var Rate_VAT = parseFloat(document.getElementById("Rate_VAT").value);
+            var Value_VAT = parseFloat(document.getElementById("Value_VAT").value);
+
+            var Amount_Commission2 = Amount_Commission / Rate_VAT;
+
+
+            if (typeof Amount_Commission === 'undefined' || !Amount_Commission) {
+
+                alert('يرجي ادخال مبلغ العمولة ');
+
+            } else {
+                var intResults = Amount_Commission2 ;
+
+                sumq = parseFloat(intResults).toFixed(2);
+
+                document.getElementById("Value_VAT").value = sumq;
+
+            }
+
+        }
+
+    </script>
 
 @endsection

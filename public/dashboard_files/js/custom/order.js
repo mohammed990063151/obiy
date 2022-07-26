@@ -6,7 +6,7 @@ $(document).ready(function() {
         e.preventDefault();
         var name = $(this).data('name');
         var id = $(this).data('id');
-        var price = $.number($(this).data('price'), 2);
+        var price = $.number($(this).data('sale_price'), 2);
         var stock = $(this).data('stock');
 
         $(this).removeClass('btn-success').addClass('btn-default disabled');
@@ -18,7 +18,7 @@ $(document).ready(function() {
                 oninvalid="this.setCustomValidity('هذه الكمية اكبر من كمية الموجود في المخزن')"
   oninput="this.setCustomValidity('')"></td>
 
-                <td class="product-price">${price}</td>               
+                <td class="product-price" value="${price}">${price}</td>               
                 <td><button class="btn btn-danger btn-sm remove-product-btn" data-id="${id}"><span class="fa fa-trash"></span></button></td>
             </tr>`;
 
